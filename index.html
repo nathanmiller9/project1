@@ -2,20 +2,53 @@
 <html>
 <head>
 	<title>Mixtape</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<div id="header">
+<div class="header">
+	<h1 id="title">Mixtape</h1>
 </div>
-<div id="sender">
+<div id="letter-head" class="container">
+	<div class="row">
+		<div class="col-lg-1">
+		<h2>To: </h2>
+		</div>
+		<div id="who-its-for" class="col-lg-4">
+			<h2><input type="text" placeholder="name"></h2>
+		</div>
+		<div id="personal-message" class="col-lg-6">
+			<h2><input type="text" placeholder="Mixtape Name"></h2>
+		</div>
+	</div>		
 </div>
-<div id="playlist">
+<br>
+<div id="songs-visuals" class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<div id="playlist">
+				<div class="panel panel-default">
+  					<div class="panel-body">
+  					<p>Playlist goes here</p>
+  					</div>
+  				</div>	
+			</div>
+		</div>
+		<div class="col-lg-8">	
+			<div id="visuals">
+				<div class="panel panel-default">
+  					<div class="panel-body">
+  					<p>Visuals Go here</p>
+  					</div>
+  				</div>	
+			</div>
+		</div>
+	</div>	
 </div>
-<div id="visuals">
-</div>
-<div id="recipient">
-</div>
+<div id="who-its-from">
+</div>	
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
