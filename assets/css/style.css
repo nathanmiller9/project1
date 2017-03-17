@@ -1,0 +1,28 @@
+/*h1 {
+	text-align: center;
+}*/
+
+.address {
+	background-color: white;
+}
+
+#header {
+	background-color: white;
+}
+
+img {
+	width: 400px;
+}
+
+#main-header {
+	font-size: 3em;
+}
+
+#to {
+	float: left;
+}
+
+#from {
+	float: left;
+}
+
