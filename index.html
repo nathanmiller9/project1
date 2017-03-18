@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html>
+
 <head>
-	<title>Mixtape</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>Mixtape</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Days+One|Playfair+Display+SC|Sanchez|Yrsa" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-<div id="header">
+<div class="container">
+<div class="row">
+    <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6" id="header">
+           <!--  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> -->
+                <h1><img src="assets/images/mixtape3.jpg"></h1>
+                <br> 
+                <h1 class="main-header" id="main-header">Make your own..</h1>
+    </div>
+    <div class="jumbotron address col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <br>
+                <br>
+                <small id="to">To: <span id="recipient">(Recipient's name)</span></small>
+                <br>
+                <br>
+                <small id="from">From: <span id="sender">(Sender's name)</span></small>  
+            <!-- </div>  -->
+    </div>
 </div>
-<div id="sender">
-</div>
-<div id="playlist">
-</div>
-<div id="visuals">
-</div>
-<div id="recipient">
+    
+    <div class="row main">
+        <div id="playlist" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">placeholder
+        </div>
+        <div id="visuals" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">placeholder
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
+
+
+
+
