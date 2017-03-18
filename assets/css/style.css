@@ -5,6 +5,11 @@
 
  }
 
+ #start-button {
+ 	font-family: 'Permanent Marker', cursive;
+ 	font-size: 40px;
+ }
+
 #title {
 	font-family: 'Permanent Marker', cursive;
 	text-align: center;

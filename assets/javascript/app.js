@@ -1,3 +1,36 @@
+$(document).ready(function(){
+
+$("#edit-area").hide();
+
+});
+
+$("#start-button").on("click", function () {
+	$("#start-button").hide();
+	$("#edit-area").show();
+})
+
+$("#recipient-input-btn").on("click", function () {
+	if (!$("#recipient-input").val()) {
+		alert("Cannot be empty!");
+	}
+	else {
+		$("#recipient-input-btn").hide();
+		$("#recipient-input").hide();
+		$("#recipient").html($("#recipient-input").val());
+	}	
+})
+
+$("#mixtape-name-input-btn").on("click", function () {
+	if (!$("#mixtape-name-input").val()) {
+		alert("Cannot be empty!");
+	}
+	else {
+		$("#mixtape-name-input-btn").hide();
+		$("#mixtape-name-input").hide();
+		$("#mixtape").html($("#mixtape-name-input").val());
+	}	
+})
+
 // Initialize Firebase
 var config = {
 apiKey: "AIzaSyAuYP04nQL20GAouCjVi0e47yMf_VFaHkc",
@@ -37,5 +70,5 @@ $("#youtube-submit").on("click", function () {
 	}).done(function (video) {
 		// save video into database
 	})
-	
+
 })

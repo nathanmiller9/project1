@@ -11,16 +11,22 @@
 <div class="header">
 	<h1 id="title">Mixtape</h1>
 </div>
+<center>
+	<div id="start-button" class="btn btn-lg btn-primary">Get Started</div>
+</center>
+<div id="edit-area">
 <div id="letter-head" class="container">
 	<div class="row">
 		<div class="col-lg-1">
 		<h2>To: </h2>
 		</div>
 		<div id="who-its-for" class="col-lg-4">
-			<h2><input type="text" placeholder="name"></h2>
+			<h2><span id="recipient"><input id="recipient-input" type="text" placeholder="name"></span></h2>
+			<div class="btn btn-success" id="recipient-input-btn">Submit</div>
 		</div>
-		<div id="personal-message" class="col-lg-6">
-			<h2><input type="text" placeholder="Mixtape Name"></h2>
+		<div id="mixtape-name" class="col-lg-6">
+			<h2><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="Name of Mixtape"></span></h2>
+			<div class="btn btn-success" id="mixtape-name-input-btn">Submit</div>
 		</div>
 	</div>		
 </div>
@@ -57,7 +63,8 @@
 	</div>	
 </div>
 <div id="who-its-from">
-</div>	
+</div>
+</div>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
