@@ -43,6 +43,22 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+// song list append
+$("#song-add").on("click", function(event) {
+	event.preventDefault();
+	var songCount = 0;
+
+	// creates p element with the name of the song to be added
+	var newSong = $("#song-search").val().trim();
+	var addSongP = $("<p>");
+	addSongP.attr("id", "song" + songCount);
+	addSongP.append(" ", newSong);
+
+	// creates button to remove the song if necessary
+	var removeSong = $('<div class="btn btn-danger" value="X">')
+})
+
+
 // imgur API
 $("#imgur-submit").on("click", function () {
 	
