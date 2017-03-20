@@ -55,7 +55,8 @@ $("#song-add").on("click", function(event) {
 	addSongP.append(" ", newSong);
 
 	// creates button to remove the song if necessary
-	var removeSong = $('<div class="btn btn-danger" value="X">')
+	var removeSong = $('<div class="btn btn-danger" value="X">');
+	removeSong.attr("data-")
 })
 
 
