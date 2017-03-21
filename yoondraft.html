@@ -36,8 +36,7 @@
             <!-- section to house the main visual window for messages, visuals, attachments -->
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
             <br>
-
-                <div class="panel panel-default allan-visual">
+                <div class="panel panel-default">
                     <div class="panel-body">
                         <p>Visuals Go here:</p>
                         <p>Find images here:</p>
@@ -48,64 +47,6 @@
                         <div class="btn btn-primary" id="youtube-submit">SUBMIT</div>
                     </div>
                 </div>
-
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">YouTube API - Search Query</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="search-query">Song</label>
-                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success">Search + Add to Mixtape</button>
-                            </div>
-                        </form>
-                        <h4>YouTube API Key</h4>
-                        <div id="youtube-api-container"></div>
-                    </div>
-                </div>
-
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Firebase - Add Notes to Selected Song</h4>
-                    </div>
-                    <div class="panel-body">
-                        <div id="active-song-container" style="display: none">
-                            <h4>Video Title</h4>
-                            <h5 id="active-song-title"></h5>
-                            <div class="form-group">
-                                <textarea id="active-song-textarea" class="form-control" placeholder="What do you have to say about this song?"></textarea>
-                                <button id="active-song-add-button" class="btn btn-success">Add Note</button>
-                            </div>
-                            <h4>Video Notes</h4>
-                            <div id="active-song-notes"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">YouTube API - Search Result</h4>
-                    </div>
-                    <div class="panel-body">
-                        <div id="result-container" style="display: none">
-                            <h4>Video ID</h4>
-                            <div id="result-id-container"></div>
-                            <h4>Video Title</h4>
-                            <div id="result-title-container"></div>
-                            <h4>Link</h4>
-                            <div id="result-link-container"></div>
-                            <h4>JSON</h4>
-                            <div id="result-json-container"></div>
-                        </div>
-                        <h4>Video Player (Autoplay)</h4>
-                        <div id="result-video-container" class="embed-responsive embed-responsive-16by9" style="display: none">
-                        <div id="player"></div>
-                        </div>
-                    </div>
-                </div>
-
             <!-- end visual section -->
             </div>
             <!-- section to display playlist -->
@@ -120,16 +61,6 @@
                     <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
                     </div>
                 </div>  
-
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Firebase - List of Songs</h4>
-                    </div>
-                    <div class="panel-body">
-                        <ol id="mixtape-container"></ol>
-                        <button id="delete-button" class="btn btn-danger">Delete Mixtape</button>
-                    </div>
-                </div>
             <!-- end playlist section -->
             </div>
         <!-- end section -->
