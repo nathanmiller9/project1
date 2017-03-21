@@ -1,28 +1,145 @@
-/*h1 {
-	text-align: center;
-}*/
 
-.address {
-	background-color: white;
+
+/*
+
+potential background templates:
+https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-textures.jpg;*/
+.container {
+	background-image: url("https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-textures.jpg");
+ 	/*background-image: url("../images/background.png");*/
+ 	background-size: cover;
+	background-repeat: no-repeat;
+ }
+
+
+
+ #heading {
+ 	font-weight: 800;
+ 	display: flex;
+ 	align-items: center;
+ 	font-size: 7em;
+ 	font-family: 'Audiowide', cursive;
+	/*font-family: 'Sigmar One', cursive;*/
+	/*font-family: 'Monoton', cursive;*/
+	/*font-family: 'Michroma', sans-serif;*/
+	/*font-family: 'Walter Turncoat', cursive;
+	/*font-family: 'Bungee Outline', cursive;*/
+	/*font-family: 'Bungee Inline', cursive;*/
+	/*font-family: 'Holtwood One SC', serif;*/
+	/*font-family: 'Bungee Shade', cursive;
+	/*font-family: 'IM Fell English SC', serif;
+	/*font-family: 'Balthazar', serif;*/
+	/*font-family: 'Poller One', cursive;*/
+	/*font-family: 'Asset', cursive;
+	/*font-family: 'Monofett', cursive;*/
+ }
+
+ #heading-logo {
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center;
+ }
+
+ img {
+ 	width: 80%;
+ }
+
+#start-button {
+ 	font-family: 'Permanent Marker', cursive;
+ 	font-size: 40px;
+ }
+
+#visuals {
+	height: 400px;
+	border: solid 5px black;
 }
 
-#header {
-	background-color: white;
+#playlist {
+	height: 400px;
+	border: solid 5px black;
 }
 
-img {
-	width: 400px;
+/*responsiveness*/
+@media (max-width: 335.9px) {
+        #heading {
+            font-size: 2em;
+        }
 }
 
-#main-header {
-	font-size: 3em;
+@media (min-width: 300px) and (max-width: 320.9px) {
+        #heading {
+            font-size: 2.6em;
+        }
 }
 
-#to {
-	float: left;
+@media (min-width: 321px) and (max-width: 342.9px) {
+        #heading {
+            font-size: 2.9em;
+        }
 }
 
-#from {
-	float: left;
+@media (min-width: 343px) and (max-width: 395.9px) {
+        #heading {
+            font-size: 3.2em;
+        }
 }
 
+@media (min-width: 396px) and (max-width: 447.9px) {
+        #heading {
+            font-size: 3.7em;
+        }
+}
+
+@media (min-width: 448px) and (max-width: 527.9px) {
+        #heading {
+            font-size: 4.3em;
+        }
+}
+
+@media (min-width: 528px) and (max-width: 599.9px) {
+        #heading {
+            font-size: 5em;
+        }
+}
+
+@media (min-width: 600px) and (max-width: 700.9px) {
+        #heading {
+            font-size: 5.8em;
+        }
+}
+
+@media (min-width: 701px) and (max-width: 767.9px) {
+        #heading {
+            font-size: 6.5em;
+        }
+}
+
+@media (min-width: 768px) and (max-width: 991.9px) {
+        #heading {
+            font-size: 7em;
+        }
+}
+
+@media (min-width: 992px) and (max-width: 1007.9px) {
+        #heading {
+            font-size: 7.7em;
+        }
+}
+
+@media (min-width: 1008px) and (max-width: 1100px) {
+        #heading {
+            font-size: 8.5em;
+        }
+}
+
+@media (min-width: 1100.1px) and (max-width: 1196.9px) {
+        #heading {
+            font-size: 9em;
+        }
+}
+
+@media (min-width: 1197px) {
+        #heading {
+            font-size: 10em;
+        }
+}
