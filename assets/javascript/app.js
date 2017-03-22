@@ -49,6 +49,8 @@ $("#mixtape-name-input-btn").on("click", function () {
 
 $("#search-button").on("click", function (e) {
 	e.preventDefault();
+
+	
 })
 
 // song list append
