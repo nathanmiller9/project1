@@ -12,13 +12,12 @@ var config = {
 firebase.initializeApp(config);
 var ref = firebase.database().ref();
 
-$(document).ready(function(){
-
-$("#edit-area").hide();
-
+$(document).ready(function() {
+	$("#youtube-api-container").text(youtubeKey);
 });
 
-// loads video embedded video player
+//load iFrame/embedded video player
+// 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -28,67 +27,12 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 var searchCount = 1;
 
-$("#start-button").on("click", function () {
-	$("#start-button").hide();
-	$("#edit-area").show();
-})
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
 
-$("#recipient-input-btn").on("click", function () {
-	if (!$("#recipient-input").val()) {
-		alert("Cannot be empty!");
-	}
-	else {
-		$("#recipient-input-btn").hide();
-		$("#recipient-input").hide();
-		$("#recipient").html($("#recipient-input").val());
-	}	
-})
-
-$("#mixtape-name-input-btn").on("click", function () {
-	if (!$("#mixtape-name-input").val()) {
-		alert("Cannot be empty!");
-	}
-	else {
-		$("#mixtape-name-input-btn").hide();
-		$("#mixtape-name-input").hide();
-		$("#mixtape").html($("#mixtape-name-input").val());
-	}	
-})
-
-// song list append
-$("#song-add").on("click", function(event) {
-	event.preventDefault();
-	var songCount = 0;
-
-	// creates p element with the name of the song to be added
-	var newSong = $("#song-search").val().trim();
-	var addSongP = $("<p>");
-	addSongP.attr("id", "song" + songCount);
-	addSongP.append(" ", newSong);
-
-	// creates button to remove the song if necessary
-	var removeSong = $('<div class="btn btn-danger" value="X">');
-	removeSong.attr("data-")
-})
-
-
-// imgur API
-$("#imgur-submit").on("click", function () {
-	
-	var imgQuery = $("#imgur-search").val();
-	var imgurUrl = "";
-	
-	$.ajax({
-		url: imgurUrl,
-		method: "GET"
-	}).done(function (image) {
-		// save picture into database
-	})
-
-})
-
-// youtube API
-$("#youtube-submit").on("click", function(e) {
+$("#search-button").on("click", function(e) {
 	e.preventDefault();
 
 	$("#result-container").show();
@@ -97,7 +41,7 @@ $("#youtube-submit").on("click", function(e) {
 		cache: false,
 		data: $.extend({
 			key: youtubeKey,
-			q: $("#youtube-search").val(),
+			q: $("#search-query").val(),
 			part: "snippet"
 		}, {maxResults: 1, type: "video"}),
 		dataType: "json",
@@ -166,17 +110,6 @@ $("#youtube-submit").on("click", function(e) {
 		$("#active-song-notes").empty();
 	});
 });
-
-// ------------------------------------------------------------------
-
-
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-$("#search-button")
 
 //delete/clear firebase
 $("#delete-button").on("click", function() {
