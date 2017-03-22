@@ -50,7 +50,10 @@ $("#mixtape-name-input-btn").on("click", function () {
 $("#search-button").on("click", function (e) {
 	e.preventDefault();
 
-	
+	ref.child("playlist").push({
+		artist: $("#artist-query").val();
+		song: $("#song-query").val();
+	})	
 })
 
 // song list append
