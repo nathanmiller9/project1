@@ -31,17 +31,10 @@ $("#mixtape-name-input-btn").on("click", function () {
 	}	
 })
 
-// Initialize Firebase
-var config = {
-apiKey: "AIzaSyAuYP04nQL20GAouCjVi0e47yMf_VFaHkc",
-	authDomain: "project1-c9b34.firebaseapp.com",
-	databaseURL: "https://project1-c9b34.firebaseio.com",
-	storageBucket: "project1-c9b34.appspot.com",
-	messagingSenderId: "490424550879"
-};
-firebase.initializeApp(config);
 
-var database = firebase.database();
+$("#search-button").on("click", function (e) {
+	e.preventDefault();
+})
 
 // song list append
 $("#song-add").on("click", function(event) {
