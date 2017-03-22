@@ -51,9 +51,20 @@ $("#search-button").on("click", function (e) {
 	e.preventDefault();
 
 	ref.child("playlist").push({
-		artist: $("#artist-query").val();
-		song: $("#song-query").val();
+		artist: $("#artist-query").val(),
+		song: $("#song-query").val()
 	})	
+
+	ref.child("playlist").on("child_added" , function (songItem) {
+		var songList = $("<li>")
+		var songAndArtist;
+		var songKey = songItem.getKey();
+		songAndArtist = songItem.val().artist + " - " + songItem.val().song;
+		songList.text(songAndArtist);
+		$("#mixtape-container").append(songList);
+	})
+	
+	
 })
 
 // song list append
