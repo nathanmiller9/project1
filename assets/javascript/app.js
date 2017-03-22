@@ -16,7 +16,7 @@ $("#recipient-input-btn").on("click", function () {
 	else {
 		$("#recipient-input-btn").hide();
 		$("#recipient-input").hide();
-		$("#recipient").html($("#recipient-input").val());
+		$("#recipient").html("for: " + $("#recipient-input").val());
 	}	
 })
 
@@ -27,7 +27,7 @@ $("#mixtape-name-input-btn").on("click", function () {
 	else {
 		$("#mixtape-name-input-btn").hide();
 		$("#mixtape-name-input").hide();
-		$("#mixtape").html($("#mixtape-name-input").val());
+		$("#mixtape").html($("#mixtape-name-input").val() + " mix");
 	}	
 })
 

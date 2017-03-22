@@ -33,21 +33,29 @@
         <center><div id="start-button" class="btn btn-lg btn-primary">Get Started</div></center>
         <!-- main section consisting of one row and two columns housing visuals and playlist -->
         <section class="row" id="edit-area">
+
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
+
+                 <div id="letter-head" class="container">
+                    <div class="row">
+                        <div id="mixtape-name" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <h6><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="mix name"></span></h2>
+                            <div class="btn btn-success btn-xs" id="mixtape-name-input-btn">Submit
+                            </div>
+                        </div>
+                        <div id="who-its-for" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <h6><span id="recipient"><input id="recipient-input" type="text" placeholder="who's it for?"></span></h2>
+                            <div class="btn btn-success btn-xs" id="recipient-input-btn">Submit</div>
+                        </div>
+                    </div>      
+                </div>
+            </div>
             <!-- section to house the main visual window for messages, visuals, attachments -->
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-            <br>
+            
+               
 
-                <div class="panel panel-default allan-visual">
-                    <div class="panel-body">
-                        <p>Visuals Go here:</p>
-                        <p>Find images here:</p>
-                        <input type="text" id="imgur-search" placeholder="image search">
-                        <div class="btn btn-primary" id="imgur-submit">SUBMIT</div>
-                        <p>Find videos here: </p>
-                        <input type="text" id="youtube-search" placeholder="video search">
-                        <div class="btn btn-primary" id="youtube-submit">SUBMIT</div>
-                    </div>
-                </div>
+                <br>
 
                 <div class="panel panel-danger">
                     <div class="panel-heading">
@@ -58,7 +66,24 @@
                             <div class="form-group">
                                 <label for="search-query">Song</label>
                                 <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success">Search + Add to Mixtape</button>
+                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
+                            </div>
+                        </form>
+                        <h4>YouTube API Key</h4>
+                        <div id="youtube-api-container"></div>
+                    </div>
+                </div>
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">YouTube API - Search Query</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="search-query">Artist</label>
+                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
+                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
                             </div>
                         </form>
                         <h4>YouTube API Key</h4>
@@ -111,7 +136,7 @@
             <!-- section to display playlist -->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
             <br>
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                     <div class="panel-body">
                     <h4>Playlist</h4>
                     <div id="song-list"></div>  
@@ -119,7 +144,7 @@
                     <div class="btn btn-primary" id="song-search-submit">SUBMIT</div>
                     <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
                     </div>
-                </div>  
+                </div>   -->
 
                 <div class="panel panel-warning">
                     <div class="panel-heading">
@@ -127,7 +152,7 @@
                     </div>
                     <div class="panel-body">
                         <ol id="mixtape-container"></ol>
-                        <button id="delete-button" class="btn btn-danger">Delete Mixtape</button>
+                        <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
                     </div>
                 </div>
             <!-- end playlist section -->

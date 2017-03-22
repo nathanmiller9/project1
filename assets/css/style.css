@@ -50,13 +50,13 @@ https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-text
  }
 
 #visuals {
-	border: solid 5px black;
+	/*border: solid 5px black;*/
 	overflow: auto;
 }
 
 #playlist {
 	height: 300px;
-	border: solid 5px black;
+	/*border: solid 5px black;*/
 	overflow: auto;
 }
 
