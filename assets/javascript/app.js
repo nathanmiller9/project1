@@ -6,10 +6,13 @@ $("#edit-area").hide();
 
 $("#start-button").on("click", function () {
 	$("#start-button").hide();
+	$("#sample").hide();
+	$("#spacer").hide();
 	$("#edit-area").show();
 })
 
 $("#recipient-input-btn").on("click", function () {
+	event.preventDefault();
 	if (!$("#recipient-input").val()) {
 		alert("Cannot be empty!");
 	}
@@ -20,7 +23,8 @@ $("#recipient-input-btn").on("click", function () {
 	}	
 })
 
-$("#mixtape-name-input-btn").on("click", function () {
+$("#recipient-input-btn").on("click", function () {
+	event.preventDefault();
 	if (!$("#mixtape-name-input").val()) {
 		alert("Cannot be empty!");
 	}
@@ -28,6 +32,7 @@ $("#mixtape-name-input-btn").on("click", function () {
 		$("#mixtape-name-input-btn").hide();
 		$("#mixtape-name-input").hide();
 		$("#mixtape").html($("#mixtape-name-input").val() + " mix");
+		$("#giftee").html($("#mixtape-name-input").val());
 	}	
 })
 
