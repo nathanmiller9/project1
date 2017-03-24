@@ -40,13 +40,8 @@ $("#start-button").on("click", function () {
 	$("#edit-area").show();
 });
 
-<<<<<<< HEAD
-$("#recipient-input-btn").on("click", function () {
-	event.preventDefault();
-=======
 $("#recipient-input-btn").on("click", function (e) {
 	e.preventDefault();
->>>>>>> master
 	if (!$("#recipient-input").val()) {
 		alert("Cannot be empty!");
 	}
@@ -55,33 +50,12 @@ $("#recipient-input-btn").on("click", function (e) {
 		$("#recipient-input").hide();
 		$("#recipient").hide();
 		$("#giftee").html("A mix for " + $("#recipient-input").val());
-<<<<<<< HEAD
-	}	
-})
-
-$("#recipient-input-btn").on("click", function () {
-	event.preventDefault();
-	if (!$("#mixtape-name-input").val()) {
-		alert("Cannot be empty!");
-	}
-	else {
-		$("#mixtape-name-input-btn").hide();
-		$("#mixtape-name-input").hide();
-		$("#mixtape").hide();
-		$("#firebase-title").hide();
-		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
-		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
-	}	
-})
-=======
 		$("#firebase-title").hide();
 		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
 		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
 		$("#mixtape-name").hide();
 	}	
 })
-
->>>>>>> master
 
 // Push songs into firebase
 $("#search-button").on("click", function (e) {
