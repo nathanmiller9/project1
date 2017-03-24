@@ -70,7 +70,8 @@
             <!--sample playlist section-->
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
-            <br>
+
+                <br>
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -206,7 +207,7 @@
                                 <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
                                 <label for="search-query">Artist</label>
                                 <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
+                                <button type="submit" id="search-button" class="btn btn-primary btn-xs">Search + Add to Mixtape</button>
                             </div>
                         </form>
                         <h4>YouTube API Key</h4>
@@ -228,16 +229,20 @@
                     <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
                     </div>
                 </div>   -->
-
+               
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4><span id="playlist-title"><h4 class="panel-title">Firebase - List of Songs</h4></span><span id="giftee"></span></h4>
+                        <div>
+                            <h4 id="firebase-title">Firebase - List of Songs</h4>
+                            <h4><span class="panel-title" id="playlist-title"></span></h4>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <ol id="mixtape-container"></ol>
                         <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
                     </div>
                 </div>
+                <div class="alert alert-info" role="alert" id="giftee"></div>
             <!-- end playlist section -->
             </div>
         <!-- end section -->

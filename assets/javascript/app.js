@@ -19,7 +19,8 @@ $("#recipient-input-btn").on("click", function () {
 	else {
 		$("#recipient-input-btn").hide();
 		$("#recipient-input").hide();
-		$("#recipient").html("for: " + $("#recipient-input").val());
+		$("#recipient").hide();
+		$("#giftee").html("A mix for " + $("#recipient-input").val());
 	}	
 })
 
@@ -31,8 +32,10 @@ $("#recipient-input-btn").on("click", function () {
 	else {
 		$("#mixtape-name-input-btn").hide();
 		$("#mixtape-name-input").hide();
-		$("#mixtape").html($("#mixtape-name-input").val() + " mix");
-		$("#giftee").html($("#mixtape-name-input").val());
+		$("#mixtape").hide();
+		$("#firebase-title").hide();
+		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
+		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
 	}	
 })
 
