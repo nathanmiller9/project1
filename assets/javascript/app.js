@@ -26,7 +26,9 @@ $("#start-button").on("click", function () {
 	$("#edit-area").show();
 })
 
-$("#recipient-input-btn").on("click", function () {
+
+$("#recipient-input-btn").on("click", function (e) {
+	e.preventDefault();
 	if (!$("#recipient-input").val()) {
 		alert("Cannot be empty!");
 	}
@@ -38,19 +40,10 @@ $("#recipient-input-btn").on("click", function () {
 		$("#firebase-title").hide();
 		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
 		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
+		$("#mixtape-name").hide();
 	}	
 })
 
-$("#mixtape-name-input-btn").on("click", function () {
-	if (!$("#mixtape-name-input").val()) {
-		alert("Cannot be empty!");
-	}
-	else {
-		$("#mixtape-name-input-btn").hide();
-		$("#mixtape-name-input").hide();
-		$("#mixtape").html($("#mixtape-name-input").val() + " mix");
-	}	
-})
 
 // Push songs into firebase
 $("#search-button").on("click", function (e) {
