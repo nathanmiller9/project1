@@ -65,12 +65,29 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <label for="search-query">Song</label>
-                                <input type="text" id="song-query" class="form-control" placeholder="Search on YouTube">
-                                <label> and Artist </label>
-                                <input type="text" id="artist-query" class="form-control" placeholder="Search on YouTube">
+                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
                                 <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
                             </div>
                         </form>
+                        <h4>YouTube API Key</h4>
+                        <div id="youtube-api-container"></div>
+                    </div>
+                </div>
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">YouTube API - Search Query</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="search-query">Artist</label>
+                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
+                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
+                            </div>
+                        </form>
+                        <h4>YouTube API Key</h4>
+                        <div id="youtube-api-container"></div>
                     </div>
                 </div>
 
@@ -145,8 +162,7 @@
     <!-- end container div -->
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
