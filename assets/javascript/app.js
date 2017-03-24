@@ -46,42 +46,48 @@ $("#mixtape-name-input-btn").on("click", function () {
 	}	
 })
 
-
+// Push songs into firebase
 $("#search-button").on("click", function (e) {
 	e.preventDefault();
-
 	ref.child("playlist").push({
 		artist: $("#artist-query").val(),
-		song: $("#song-query").val()
+		song: $("#song-query").val(),
 	})	
+})
 
-	ref.child("playlist").on("child_added" , function (songItem) {
+//Displays current song list 
+ref.child("playlist").on("child_added" , function (songItem) {
 		var songList = $("<li>")
 		var songAndArtist;
 		var songKey = songItem.getKey();
 		songAndArtist = songItem.val().artist + " - " + songItem.val().song;
 		songList.text(songAndArtist);
+		songList.attr({"id": songKey})
+		var removeButton = $("<button>").attr({"class": "checkbox", "song-key": songKey}).text("X");
+		songList.prepend(removeButton);
 		$("#mixtape-container").append(songList);
 	})
-	
-	
+
+// Disable search button 
+ref.child("playlist").on("value", function(children) {
+		var numChild = children.numChildren();
+		if (numChild >= 20) {
+			$("#search-button").prop("disabled",true);
+		}
+		else {
+			$("#search-button").prop("disabled", false);
+		}
 })
 
-// song list append
-$("#song-add").on("click", function(event) {
-	event.preventDefault();
-	var songCount = 0;
+// Remove song from playlist button
+$(document.body).on("click", ".checkbox", function() {
+	//remove from playlist
+	var remKey = $(this).attr("song-key");
+	$("#" + remKey).remove();
 
-	// creates p element with the name of the song to be added
-	var newSong = $("#song-search").val().trim();
-	var addSongP = $("<p>");
-	addSongP.attr("id", "song" + songCount);
-	addSongP.append(" ", newSong);
-
-	// creates button to remove the song if necessary
-	var removeSong = $('<div class="btn btn-danger" value="X">')
+	//remove from firebase
+	ref.child("playlist").child(remKey).remove();
 })
-
 
 // imgur API
 $("#imgur-submit").on("click", function () {
