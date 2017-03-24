@@ -50,6 +50,12 @@ https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-text
     opacity: .9;
  }
 
+ .panel-title, #playlist-title, #giftee {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.1em;
+    opacity: .9;
+ }
+
 #visuals {
 	/*border: solid 5px black;*/
 	overflow: auto;
