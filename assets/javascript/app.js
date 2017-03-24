@@ -78,6 +78,8 @@ $("#search-button").on("click", function (e) {
 		var videoId = response.items[0].id.videoId;
 		var videoTitle = response.items[0].snippet.title;
 		var videoURL = "https://youtube.com/watch?v=" + videoId;
+		$("#player").remove();
+		$("#result-video-container").append($("<div id='player'>"));
 
 		//show and play YouTube video result
 		$("#result-video-container").show();
