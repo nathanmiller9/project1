@@ -57,7 +57,7 @@ $("#search-button").on("click", function (e) {
 	e.preventDefault();
 	ref.child("playlist").push({
 		artist: $("#artist-query").val(),
-		song: $("#song-query").val(),
+		song: $("#song-query").val()
 	})	
 })
 
@@ -72,6 +72,8 @@ ref.child("playlist").on("child_added" , function (songItem) {
 		var removeButton = $("<button>").attr({"class": "checkbox", "song-key": songKey}).text("X");
 		songList.prepend(removeButton);
 		$("#mixtape-container").append(songList);
+
+		console.log(songList);
 	})
 
 // Disable search button 

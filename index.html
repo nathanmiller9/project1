@@ -16,7 +16,7 @@
 <body>
 <!-- container to apply to the entire for entire html body -->
     <div class="container">
-        <!-- header section which will contain main heading and logo as one row -->
+        <!-- header section which will contain main heading and logo in one row -->
         <br>
         <header class="row">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="heading">
@@ -30,86 +30,21 @@
         <!-- adding space between sections -->
         <br>
         <!-- get started button which will hide upon being clicked -->
-        <center><div id="start-button" class="btn btn-lg btn-primary">Get Started</div></center>
-        <!-- main section consisting of one row and two columns housing visuals and playlist -->
-        <section class="row" id="edit-area">
+        <div id="spacer" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">    
+        </div>
 
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
+        <div id="start-button" class="btn btn-xs btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">Get Started
+        </div>
+        
+        <!-- sample display of visuals with attachments and playlist section (this section will disappear once "get started is clicked") -->
 
-                 <div id="letter-head" class="container">
-                    <div class="row">
-                        <div id="mixtape-name" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <h6><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="mix name"></span></h2>
-                            <div class="btn btn-success btn-xs" id="mixtape-name-input-btn">Submit
-                            </div>
-                        </div>
-                        <div id="who-its-for" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <h6><span id="recipient"><input id="recipient-input" type="text" placeholder="who's it for?"></span></h2>
-                            <div class="btn btn-success btn-xs" id="recipient-input-btn">Submit</div>
-                        </div>
-                    </div>      
-                </div>
-            </div>
-            <!-- section to house the main visual window for messages, visuals, attachments -->
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-            
-               
+        <section class="row" id="sample">
 
+            <!--sample visual section-->
+
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals"> 
                 <br>
-
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">YouTube API - Search Query</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="search-query">Song</label>
-                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
-                            </div>
-                        </form>
-                        <h4>YouTube API Key</h4>
-                        <div id="youtube-api-container"></div>
-                    </div>
-                </div>
-
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">YouTube API - Search Query</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="search-query">Artist</label>
-                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
-                            </div>
-                        </form>
-                        <h4>YouTube API Key</h4>
-                        <div id="youtube-api-container"></div>
-                    </div>
-                </div>
-
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Firebase - Add Notes to Selected Song</h4>
-                    </div>
-                    <div class="panel-body">
-                        <div id="active-song-container" style="display: none">
-                            <h4>Video Title</h4>
-                            <h5 id="active-song-title"></h5>
-                            <div class="form-group">
-                                <textarea id="active-song-textarea" class="form-control" placeholder="What do you have to say about this song?"></textarea>
-                                <button id="active-song-add-button" class="btn btn-success">Add Note</button>
-                            </div>
-                            <h4>Video Notes</h4>
-                            <div id="active-song-notes"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-danger">
+                    <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">YouTube API - Search Result</h4>
                     </div>
@@ -130,12 +65,161 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!--sample playlist section-->
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
+
+                <br>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Firebase - List of Songs</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ol id="sample-mixtape-container"></ol>
+                        <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
+                    </div>
+                </div>
+            <!-- end sample playlist section -->
+            </div>
+
+
+        </section>
+        <!-- main section consisting of one row and two columns housing visuals and playlist -->
+         <section class="row" id="edit-area">
+            
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
+
+                <!--  <div id="letter-head">
+                    <div class="row">
+                        <div id="mixtape-name" class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                            <h6><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="mix name"></span></h2>
+                            <div class="btn btn-success btn-xs" id="mixtape-name-input-btn">Submit
+                            </div>
+                        </div>
+                        <div id="who-its-for" class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                            <h6><span id="recipient"><input id="recipient-input" type="text" placeholder="who's it for?"></span></h2>
+                            <div class="btn btn-success btn-xs" id="recipient-input-btn">Submit</div>
+                        </div>
+                    </div>      
+                </div> -->
+            
+
+                <div id="letter-head">
+                    <div class="row">
+                        <div id="mixtape-name" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <h6><span id = "mixtape"><label for="mixtape">Mix</label>
+                                    <input type="text" class="form-control" id="mixtape-name-input" placeholder="Name of Mix"></span></h6>
+                                </div>
+                                <div class="form-group">
+                                    <h6><span id = "recipient"><label for="recipient-input">for: </label>
+                                    <input type="text" class="form-control" id="recipient-input" placeholder="Name"></span></h6>
+                                </div>
+                                <button type="submit" class="btn btn-default" id="recipient-input-btn">submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
+
+                 <div id="letter-head">
+                    <div class="row">
+                       <!--  <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-6"><form><input type="text" id="mixtape" placeholder="mix name"><span><button class ="btn btn-default btn-xs" id="mixtape-name-input-btn">Submit</button></span></form></div> -->
+                        <span class ="btn btn-default btn-xs"></span>
+                    </div>      
+                </div>
+            </div>
+            <!-- section to house the main visual window for messages, visuals, attachments -->
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">YouTube - your video will display here</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="result-container" style="display: none">
+                            <h4>Video ID</h4>
+                            <div id="result-id-container"></div>
+                            <h4>Video Title</h4>
+                            <div id="result-title-container"></div>
+                            <h4>Link</h4>
+                            <div id="result-link-container"></div>
+                            <h4>JSON</h4>
+                            <div id="result-json-container"></div>
+                        </div>
+                        <h4>Video Player (Autoplay)</h4>
+                        <div id="result-video-container" class="embed-responsive embed-responsive-16by9" style="display: none">
+                        <div id="player"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">YouTube API - Search Query</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="search-query">Artist</label>
+                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
+                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
+                            </div>
+                        </form>
+                        <h4>YouTube API Key</h4>
+                        <div id="youtube-api-container"></div>
+                    </div>
+                </div> -->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Add a note to attach to the selected song</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="active-song-container" style="display: none">
+                            <h4>Video Title</h4>
+                            <h5 id="active-song-title"></h5>
+                            <div class="form-group">
+                                <textarea id="active-song-textarea" class="form-control" placeholder="What do you have to say about this song?"></textarea>
+                                <button id="active-song-add-button" class="btn btn-success">Add Note</button>
+                            </div>
+                            <h4>Video Notes</h4>
+                            <div id="active-song-notes"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">YouTube - search and select songs for your mix</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="search-query">Song</label>
+                                <input type="text" id="song-query" class="form-control" placeholder="Search on YouTube">
+                                <label for="search-query">Artist</label>
+                                <input type="text" id="artist-query" class="form-control" placeholder="Search on YouTube">
+                                <button type="submit" id="search-button" class="btn btn-primary btn-xs">Search + Add to Mixtape</button>
+                            </div>
+                        </form>
+                        <!-- <h4>YouTube API Key</h4> -->
+                        <div id="youtube-api-container"></div>
+                    </div>
+                </div>
 
             <!-- end visual section -->
             </div>
             <!-- section to display playlist -->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
-            <br>
+
                 <!-- <div class="panel panel-default">
                     <div class="panel-body">
                     <h4>Playlist</h4>
@@ -145,23 +229,28 @@
                     <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
                     </div>
                 </div>   -->
-
-                <div class="panel panel-warning">
+               
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Firebase - List of Songs</h4>
+                        <div>
+                            <h4 class="panel-title" id="firebase-title">Mix Name</h4>
+                            <h4><span class="panel-title" id="playlist-title"></span></h4>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <ol id="mixtape-container"></ol>
+                        <ol id="mixtape-container">
+                        </ol>
                         <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
                     </div>
                 </div>
+                <div class="alert alert-info" role="alert" id="giftee">for: </div>
             <!-- end playlist section -->
             </div>
         <!-- end section -->
         </section>
     <!-- end container div -->
     </div>
-
+        <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
         <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
