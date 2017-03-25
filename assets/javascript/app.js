@@ -351,4 +351,26 @@ $(document).on("click", ".song-item", function() {
 			}
 		});
 	});
+
+	var videoId;
+
+	ref.child("playlist").child(latestFirebaseKey).once("value", function(snapshot) {
+		if(snapshot.exists() === true) {
+			videoId = snapshot.val().videoId;
+		}
+	});
+	
+	$("#player").remove();
+	$("#result-video-container").append($("<div id='player'>"));
+
+	//show and play YouTube video result
+	$("#result-video-container").show();
+	player = new YT.Player('player', {
+	  height: '390',
+	  width: '640',
+	  videoId: videoId,
+	  events: {
+	    'onReady': onPlayerReady
+	  }
+	});
 });
