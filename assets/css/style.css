@@ -322,7 +322,7 @@ img {
 
 @media (min-width: 768px) and (max-width: 882.9px) {
     #heading {
-        font-size: 8.4em;
+        font-size: 8.1em;
     }
     #start-button,
     .panel-title,
@@ -339,7 +339,7 @@ img {
 
 @media (min-width: 883px) and (max-width: 942.9px) {
     #heading {
-        font-size: 8.9em;
+        font-size: 8.2em;
     }
     #start-button,
     .panel-title,
@@ -356,7 +356,7 @@ img {
 
 @media (min-width: 943px) and (max-width: 991.9px) {
     #heading {
-        font-size: 9.5em;
+        font-size: 8.2em;
     }
     #start-button,
     .panel-title,
