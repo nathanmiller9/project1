@@ -31,6 +31,20 @@ $(document).ready(function() {
 
     $("#edit-area").hide();
 
+    // Animations
+    $("#heading").velocity("fadeIn", 1000);
+});
+
+$("#start-button").mousedown(function(){
+	$(this)
+	.velocity({ scale: "1.5"}, 150, "easeInOut")
+	.velocity("reverse");
+});
+
+$("#search-button").mousedown(function(){
+	$(this)
+	.velocity({ scale: "1.5"}, 150, "easeInOut")
+	.velocity("reverse");
 });
 
 $("#start-button").on("click", function() {

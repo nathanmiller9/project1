@@ -33,6 +33,7 @@
 - Firebase
 - YouTube API
 - Giphy API
+- Velocity.js
 
 ## Code Explanation
 - User enters search queries to add songs onto the mixtape (YouTube API), which then loads the first result in an iFrame player
@@ -40,3 +41,4 @@
 - Event listeners dynamically add songs and any user-added notes to the UI
 - Ability to add notes, GIFs from Giphy, and external images through separate buttons
 - Modals will then pop up for adding GIFs and external images
+- We also used Velocity.js for easy animations
