@@ -54,9 +54,31 @@ $("#recipient-input-btn").on("click", function (e) {
 		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
 		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
 		$("#mixtape-name").hide();
+		ref.update({
+			mixtapeName: $("#mixtape-name-input").val(),
+			recipient: $("#recipient-input").val()
+		});
 	}	
-})
+});
 
+// Firebase event listeners for updating titles and recipient from database
+ref.child("mixtapeName").on("value", function(snapshot) {
+	if(snapshot.exists() === true) {
+		$("#firebase-title").html(snapshot.val() + " Mix");
+	}
+});
+
+ref.child("recipient").on("value", function(snapshot) {
+	if(snapshot.exists() === true) {
+		$("#giftee").html("A mix for " + snapshot.val());
+	}
+});
+
+ref.on("value", function(snapshot) {
+	if(snapshot.child("mixtapeName").exists() === true && snapshot.child("recipient").exists() === true) {
+		$("#letter-head").hide();
+	}
+})
 
 // Push songs into firebase
 $("#search-button").on("click", function (e) {
@@ -119,13 +141,23 @@ $("#search-button").on("click", function (e) {
 
 		//add data-key to "Add Note" button in "Selected Song"
 		$("#active-song-add-button").attr("data-firebase-key", latestFirebaseKey);
+		$("#active-song-add-gif-button").attr("data-firebase-key", latestFirebaseKey);
+		$("#gif-search-button").attr("data-firebase-key", latestFirebaseKey);
+		$("#img-add-button").attr("data-firebase-key", latestFirebaseKey);
 
 		//add notes for song
 		ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
-				var content = childSnapshot.val().content;
-				var newDiv = $("<div class='note'>").text(content);
-				$("#active-song-notes").append(newDiv);
+				if(childSnapshot.child(type).exists() === false) {
+					var content = childSnapshot.val().content;
+					var newDiv = $("<div class='note'>").text(content);
+					$("#active-song-notes").append(newDiv);
+				} else {
+					var gifLink = childSnapshot.val().content;
+					var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+					$("#active-song-notes").append(newDiv);
+				}
+				
 			});
 		});
 
@@ -137,12 +169,15 @@ $("#search-button").on("click", function (e) {
 
 //Displays current song list 
 ref.child("playlist").on("child_added" , function (songItem) {
-		var songList = $("<li>");
+		var songList = $("<li class='song-item'>");
 		var songAndArtist;
 		var songKey = songItem.getKey();
+		var songSpan = $("<span class='song-span'>")
 		songAndArtist = songItem.val().artist + " - " + songItem.val().song;
-		songList.text(songAndArtist);
+		songSpan.text(songAndArtist);
+		songList.append(songSpan);
 		songList.attr({"id": songKey})
+		songSpan.attr({"id": songKey})
 		var removeButton = $("<button>").attr({"class": "checkbox", "song-key": songKey}).text("X");
 		songList.prepend(removeButton);
 		$("#mixtape-container").append(songList);
@@ -154,7 +189,7 @@ ref.child("playlist").on("child_added" , function (songItem) {
 ref.child("playlist").on("value", function(children) {
 		var numChild = children.numChildren();
 		if (numChild >= 20) {
-			$("#search-button").prop("disabled",true);
+			$("#search-button").prop("disabled", true);
 		}
 		else {
 			$("#search-button").prop("disabled", false);
@@ -169,53 +204,176 @@ $(document.body).on("click", ".checkbox", function() {
 
 	//remove from firebase
 	ref.child("playlist").child(remKey).remove();
-});
 
-// imgur API
-$("#imgur-submit").on("click", function () {
-	
-	var imgQuery = $("#imgur-search").val();
-	var imgurUrl = "";
-	
-	$.ajax({
-		url: imgurUrl,
-		method: "GET"
-	}).done(function (image) {
-		// save picture into database
-	})
-
-});
-
-// youtube API
-$("#youtube-submit").on("click", function () {
-
-	var youtubeQuery = $("#youtube-search").val();
-	var youtubeUrl = "";
-
-	$.ajax({
-		url: youtubeUrl,
-		method: "GET"
-	}).done(function (video) {
-		// save video into database
-	})
-
+	//hide add notes panel
+	$("#active-song-container").hide();
 });
 
 //Add a note to selected song
 $("#active-song-add-button").on("click", function(e) {
 	e.preventDefault();
 	var songKey = $(this).attr("data-firebase-key");
-	var noteContent = $("#active-song-textarea").val().trim();
+	var noteContent = $("#active-song-text-input").val().trim();
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
 	if(noteContent !== "") {
 		ref.child("playlist").child(songKey).child("notes").push({
-			content: noteContent
+			type: "text",
+			content: noteContent,
+			time: timestamp
 		});
 	}
 
 	//add new notes to active song note area
-	var newNoteContent = $("#active-song-textarea").val();
+	var newNoteContent = $("#active-song-text-input").val();
 	var newDiv = $("<div class='note'>").text(newNoteContent);
 	$("#active-song-notes").append(newDiv);
 
-	$("#active-song-textarea").val("");
+	$("#active-song-text-input").val("");
+});
+
+//search for GIPHY gifs
+$("#gif-search-button").on("click", function(e) {
+	e.preventDefault();
+	var firebaseKey = $(this).attr("data-firebase-key");
+	var query = $("#gif-search-query").val();
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=10";
+    $.ajax({
+    	url: queryURL,
+    	method: "GET"
+    }).done(function(response) {
+    	var results = response.data;
+
+		var resultsContainer = $("#gif-results");
+		resultsContainer.empty();
+
+    	for(var i = 0; i < results.length; i++) {
+    		var singleResultSpan = $("<span class='result-container'>");
+
+    		var img = $("<img class='result'>");
+    		img.attr("src", results[i].images.fixed_height.url);
+    		img.attr("data-firebase-key", firebaseKey);
+
+    		singleResultSpan.prepend(img);
+
+    		resultsContainer.prepend(singleResultSpan);
+    	}
+    });
+});
+
+$(document).on("click", ".result", function() {
+	var firebaseKey = $(this).attr("data-firebase-key");
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
+	console.log(firebaseKey);
+	ref.child("playlist").child(firebaseKey).child("notes").push({
+		type: "giphy",
+		content: $(this).attr("src"),
+		time: timestamp
+	});
+
+	var gifLink = $(this).attr("src");
+	var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+	$("#active-song-notes").append(newDiv);
+
+	$("#gif-results").empty();
+	$("#gif-search-query").val("");
+	$("#gif-modal").modal("hide");
+
+});
+
+$("#img-add-button").on("click", function(e) {
+	e.preventDefault();
+	var firebaseKey = $(this).attr("data-firebase-key");
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
+	console.log(firebaseKey);
+	ref.child("playlist").child(firebaseKey).child("notes").push({
+		type: "img",
+		content: $("#img-link").val(),
+		time: timestamp
+	});
+
+	var imgLink = $("#img-link").val();
+	var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+	$("#active-song-notes").append(newDiv);
+
+	$("#img-modal").modal("hide");
+});
+
+//for Delete Confirmation mixtape modal
+$("#confirm-delete-button").on("click", function(e) {
+	e.preventDefault();
+	ref.set(null);
+	$("#mixtape-container").empty();
+	$("#active-song-container").hide();
+	$("#delete-modal").modal("hide");
+
+	//delete titles and recipients
+	$("#firebase-title").text("Mix Name");
+	$("#giftee").text("for: ");
+})
+
+$("#cancel-button").on("click", function(e) {
+	e.preventDefault();
+	$("#delete-modal").modal("hide");
+})
+
+$(document).on("click", ".song-span", function() {
+	//Load song onto "Selected Song" panel
+	$("#active-song-container").show();
+	$("#active-song-title").text($(this).text());
+	
+	//DELETE EXISTING NOTES FROM SOME OTHER SONG
+	$("#active-song-notes").empty();
+
+	// get key of recently added song
+	var latestFirebaseKey = $(this).attr("id");
+
+	//add data-key to "Add Note" button in "Selected Song"
+	$("#active-song-add-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#active-song-add-gif-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#gif-search-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#img-add-button").attr("data-firebase-key", latestFirebaseKey);
+
+	//add notes for song
+	ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			console.log(childSnapshot.val());
+			if(childSnapshot.val().type === "text") {
+				var content = childSnapshot.val().content;
+				var newDiv = $("<div class='note'>").text(content);
+				$("#active-song-notes").append(newDiv);
+			} else {
+				var imgLink = childSnapshot.val().content;
+				var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+				$("#active-song-notes").append(newDiv);
+			}
+		});
+	});
+
+	var videoId;
+
+	ref.child("playlist").child(latestFirebaseKey).once("value", function(snapshot) {
+		if(snapshot.exists() === true) {
+			videoId = snapshot.val().videoId;
+		}
+	});
+
+	$("#player").remove();
+	$("#result-video-container").append($("<div id='player'>"));
+
+	//show and play YouTube video result
+	$("#result-video-container").show();
+	player = new YT.Player('player', {
+	  height: '390',
+	  width: '640',
+	  videoId: videoId,
+	  events: {
+	    'onReady': onPlayerReady
+	  }
+	});
 });

@@ -48,6 +48,10 @@ https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-text
     width: 80%;
  }
 
+.checkbox {
+    display: inline;
+}
+
 #start-button {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.3em;
