@@ -96,7 +96,6 @@ $("#search-button").on("click", function(e) {
         url: "https://www.googleapis.com/youtube/v3/search"
     }).done(function(response) {
         var str = JSON.stringify(response);
-        console.log(response);
         var videoId = response.items[0].id.videoId;
         var videoTitle = response.items[0].snippet.title;
         var videoURL = "https://youtube.com/watch?v=" + videoId;
@@ -181,8 +180,6 @@ ref.child("playlist").on("child_added", function(songItem) {
     var removeButton = $("<button>").attr({ "class": "checkbox", "song-key": songKey }).text("X");
     songList.prepend(removeButton);
     $("#mixtape-container").append(songList);
-
-    console.log(songList);
 });
 
 // Disable search button 
@@ -266,7 +263,6 @@ $(document).on("click", ".result", function() {
     var now = new Date();
     var timestamp = now.toLocaleString();
 
-    console.log(firebaseKey);
     ref.child("playlist").child(firebaseKey).child("notes").push({
         type: "giphy",
         content: $(this).attr("src"),
@@ -289,7 +285,6 @@ $("#img-add-button").on("click", function(e) {
     var now = new Date();
     var timestamp = now.toLocaleString();
 
-    console.log(firebaseKey);
     ref.child("playlist").child(firebaseKey).child("notes").push({
         type: "img",
         content: $("#img-link").val(),
@@ -341,7 +336,6 @@ $(document).on("click", ".song-span", function() {
     //add notes for song
     ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
-            console.log(childSnapshot.val());
             if (childSnapshot.val().type === "text") {
                 var content = childSnapshot.val().content;
                 var newDiv = $("<div class='note'>").text(content);
