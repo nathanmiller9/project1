@@ -54,9 +54,31 @@ $("#recipient-input-btn").on("click", function (e) {
 		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
 		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
 		$("#mixtape-name").hide();
+		ref.update({
+			mixtapeName: $("#mixtape-name-input").val(),
+			recipient: $("#recipient-input").val()
+		});
 	}	
-})
+});
 
+// Firebase event listeners for updating titles and recipient from database
+ref.child("mixtapeName").on("value", function(snapshot) {
+	if(snapshot.exists() === true) {
+		$("#firebase-title").html(snapshot.val() + " Mix");
+	}
+});
+
+ref.child("recipient").on("value", function(snapshot) {
+	if(snapshot.exists() === true) {
+		$("#giftee").html("A mix for " + snapshot.val());
+	}
+});
+
+ref.on("value", function(snapshot) {
+	if(snapshot.child("mixtapeName").exists() === true && snapshot.child("recipient").exists() === true) {
+		$("#letter-head").hide();
+	}
+})
 
 // Push songs into firebase
 $("#search-button").on("click", function (e) {
@@ -289,6 +311,10 @@ $("#confirm-delete-button").on("click", function(e) {
 	$("#mixtape-container").empty();
 	$("#active-song-container").hide();
 	$("#delete-modal").modal("hide");
+
+	//delete titles and recipients
+	$("#firebase-title").text("Mix Name");
+	$("#giftee").text("for: ");
 })
 
 $("#cancel-button").on("click", function(e) {
