@@ -281,7 +281,9 @@ $(document).on("click", ".result", function() {
 	$("#active-song-notes").append(newDiv);
 
 	$("#gif-results").empty();
+	$("#gif-search-query").val("");
 	$("#gif-modal").modal("hide");
+
 });
 
 $("#img-add-button").on("click", function(e) {
@@ -304,7 +306,14 @@ $("#img-add-button").on("click", function(e) {
 	$("#img-modal").modal("hide");
 });
 
-$("#delete-button").on("click", function() {
+$("#confirm-delete-button").on("click", function(e) {
+	e.preventDefault();
 	ref.set(null);
 	$("#mixtape-container").empty();
+	$("#delete-modal").modal("hide");
+})
+
+$("#cancel-button").on("click", function(e) {
+	e.preventDefault();
+	$("#delete-modal").modal("hide");
 })

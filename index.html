@@ -185,12 +185,11 @@
                     </div>
                     <div class="panel-body">
                         <div id="active-song-container" style="display: none">
-                            <h4>Video Title</h4>
-                            <h5 id="active-song-title"></h5>
-                            <div class="form-group">
+                            <h4 id="active-song-title"></h4>
+                            <form class="form-group">
                                 <input id="active-song-text-input" class="form-control" placeholder="What do you have to say about this song?"></input>
                                 <button id="active-song-add-button" class="btn btn-success">Add Note</button>
-                            </div><!-- end form-group -->
+                            </form><!-- end form-group -->
 
 
                             <!-- Button trigger modal for GIPHY gifs -->
@@ -205,7 +204,7 @@
                                   </div><!-- end modal-header -->
                                   <form class="form-inline">
                                       <div class="form-group">
-                                          <input type="text" id="gif-search-query" placeholder="Search on GIPHY">
+                                          <input type="text" id="gif-search-query" class="form-control" placeholder="Search on GIPHY">
                                           <button id="gif-search-button" class="btn btn-default">Search</button>
                                           <div id="gif-results"></div><!-- end gif-results -->
                                       </div><!-- end form-group -->
@@ -214,7 +213,7 @@
                               </div><!-- end modal-dialog -->
                             </div><!-- end modal -->
 
-                            <!-- Button trigger modal for GIPHY gifs -->
+                            <!-- Button trigger modal for any external img link -->
                             <button id="active-song-add-img-button" class="btn btn-success" data-toggle="modal" data-target="#img-modal">Add External Image</button>
 
                             <div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="img-modal-label">
@@ -226,7 +225,7 @@
                                   </div><!-- end modal-header -->
                                   <form class="form-inline">
                                       <div class="form-group">
-                                          <input type="text" id="img-link" placeholder="Image Link">
+                                          <input type="text" id="img-link" class="form-control" placeholder="Image Link">
                                           <button id="img-add-button" class="btn btn-default">Add</button>
                                       </div><!-- end form-group -->
                                   </form><!-- end form-inline -->
@@ -234,7 +233,7 @@
                               </div><!-- end modal-dialog -->
                             </div><!-- end modal -->
 
-                            <h4>Video Notes</h4>
+                            <h4>Notes</h4>
                             <div id="active-song-notes"></div><!-- end active-song-notes -->
                         </div><!-- end active-song-container -->
                     </div><!-- end panel-body -->
@@ -284,7 +283,26 @@
                     <div class="panel-body">
                         <ol id="mixtape-container">
                         </ol>
-                        <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
+
+                        <!-- Button trigger modal for deleting mixtape -->
+                        <button id="delete-button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal">Delete Mixtape</button>
+
+                        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label">
+                          <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <h4 class="modal-title">Are you sure you want to delete your mixtape?</h4>
+                              </div><!-- end modal-header -->
+                              <form class="form-inline">
+                                  <div class="form-group">
+                                      <button id="cancel-button" class="btn btn-default">Cancel</button>
+                                      <button id="confirm-delete-button" class="btn btn-danger">Delete</button>
+                                  </div><!-- end form-group -->
+                              </form><!-- end form-inline -->
+                            </div><!-- end modal-content -->
+                          </div><!-- end modal-dialog -->
+                        </div><!-- end modal -->
                     </div>
                 </div>
                 <div class="alert alert-info" role="alert" id="giftee">for: </div>
