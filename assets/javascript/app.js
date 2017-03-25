@@ -150,9 +150,12 @@ ref.child("playlist").on("child_added" , function (songItem) {
 		var songList = $("<li class='song-item'>");
 		var songAndArtist;
 		var songKey = songItem.getKey();
+		var songSpan = $("<span class='song-span'>")
 		songAndArtist = songItem.val().artist + " - " + songItem.val().song;
-		songList.text(songAndArtist);
+		songSpan.text(songAndArtist);
+		songList.append(songSpan);
 		songList.attr({"id": songKey})
+		songSpan.attr({"id": songKey})
 		var removeButton = $("<button>").attr({"class": "checkbox", "song-key": songKey}).text("X");
 		songList.prepend(removeButton);
 		$("#mixtape-container").append(songList);
@@ -164,7 +167,7 @@ ref.child("playlist").on("child_added" , function (songItem) {
 ref.child("playlist").on("value", function(children) {
 		var numChild = children.numChildren();
 		if (numChild >= 20) {
-			$("#search-button").prop("disabled",true);
+			$("#search-button").prop("disabled", true);
 		}
 		else {
 			$("#search-button").prop("disabled", false);
@@ -179,36 +182,9 @@ $(document.body).on("click", ".checkbox", function() {
 
 	//remove from firebase
 	ref.child("playlist").child(remKey).remove();
-});
 
-// imgur API
-$("#imgur-submit").on("click", function () {
-	
-	var imgQuery = $("#imgur-search").val();
-	var imgurUrl = "";
-	
-	$.ajax({
-		url: imgurUrl,
-		method: "GET"
-	}).done(function (image) {
-		// save picture into database
-	})
-
-});
-
-// youtube API
-$("#youtube-submit").on("click", function () {
-
-	var youtubeQuery = $("#youtube-search").val();
-	var youtubeUrl = "";
-
-	$.ajax({
-		url: youtubeUrl,
-		method: "GET"
-	}).done(function (video) {
-		// save video into database
-	})
-
+	//hide add notes panel
+	$("#active-song-container").hide();
 });
 
 //Add a note to selected song
@@ -311,6 +287,7 @@ $("#confirm-delete-button").on("click", function(e) {
 	e.preventDefault();
 	ref.set(null);
 	$("#mixtape-container").empty();
+	$("#active-song-container").hide();
 	$("#delete-modal").modal("hide");
 })
 
@@ -319,7 +296,7 @@ $("#cancel-button").on("click", function(e) {
 	$("#delete-modal").modal("hide");
 })
 
-$(document).on("click", ".song-item", function() {
+$(document).on("click", ".song-span", function() {
 	//Load song onto "Selected Song" panel
 	$("#active-song-container").show();
 	$("#active-song-title").text($(this).text());
@@ -359,7 +336,7 @@ $(document).on("click", ".song-item", function() {
 			videoId = snapshot.val().videoId;
 		}
 	});
-	
+
 	$("#player").remove();
 	$("#result-video-container").append($("<div id='player'>"));
 
