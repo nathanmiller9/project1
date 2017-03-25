@@ -121,7 +121,8 @@ $("#search-button").on("click", function (e) {
 		$("#active-song-add-button").attr("data-firebase-key", latestFirebaseKey);
 		$("#active-song-add-gif-button").attr("data-firebase-key", latestFirebaseKey);
 		$("#gif-search-button").attr("data-firebase-key", latestFirebaseKey);
-		
+		$("#img-add-button").attr("data-firebase-key", latestFirebaseKey);
+
 		//add notes for song
 		ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
@@ -214,37 +215,37 @@ $("#youtube-submit").on("click", function () {
 $("#active-song-add-button").on("click", function(e) {
 	e.preventDefault();
 	var songKey = $(this).attr("data-firebase-key");
-	var noteContent = $("#active-song-textarea").val().trim();
+	var noteContent = $("#active-song-text-input").val().trim();
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
 	if(noteContent !== "") {
 		ref.child("playlist").child(songKey).child("notes").push({
-			content: noteContent
+			type: "text",
+			content: noteContent,
+			time: timestamp
 		});
 	}
 
 	//add new notes to active song note area
-	var newNoteContent = $("#active-song-textarea").val();
+	var newNoteContent = $("#active-song-text-input").val();
 	var newDiv = $("<div class='note'>").text(newNoteContent);
 	$("#active-song-notes").append(newDiv);
 
-	$("#active-song-textarea").val("");
+	$("#active-song-text-input").val("");
 });
 
 //search for GIPHY gifs
-$("#gif-search-button").on("click", function() {
+$("#gif-search-button").on("click", function(e) {
+	e.preventDefault();
 	var firebaseKey = $(this).attr("data-firebase-key");
-	console.log(firebaseKey);
 	var query = $("#gif-search-query").val();
-	console.log(query);
 	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=10";
-	console.log(queryURL);
     $.ajax({
     	url: queryURL,
     	method: "GET"
     }).done(function(response) {
-    	console.log("ajax");
-    	console.log(response);
     	var results = response.data;
-    	console.log(results);
 
 		var resultsContainer = $("#gif-results");
 		resultsContainer.empty();
@@ -279,5 +280,31 @@ $(document).on("click", ".result", function() {
 	var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
 	$("#active-song-notes").append(newDiv);
 
+	$("#gif-results").empty();
 	$("#gif-modal").modal("hide");
 });
+
+$("#img-add-button").on("click", function(e) {
+	e.preventDefault();
+	var firebaseKey = $(this).attr("data-firebase-key");
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
+	console.log(firebaseKey);
+	ref.child("playlist").child(firebaseKey).child("notes").push({
+		type: "img",
+		content: $("#img-link").val(),
+		time: timestamp
+	});
+
+	var imgLink = $("#img-link").val();
+	var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+	$("#active-song-notes").append(newDiv);
+
+	$("#img-modal").modal("hide");
+});
+
+$("#delete-button").on("click", function() {
+	ref.set(null);
+	$("#mixtape-container").empty();
+})
