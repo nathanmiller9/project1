@@ -12,8 +12,8 @@ var config = {
 firebase.initializeApp(config);
 var ref = firebase.database().ref();
 
-//load iFrame/embedded video player
-// 2. This code loads the IFrame Player API code asynchronously.
+// Load iFrame/embedded video player
+//	This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -22,7 +22,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 
-// 4. The API will call this function when the video player is ready.
+// The iFrame API will call this function when the video player is ready.
 function onPlayerReady(event) {
     event.target.playVideo();
 }
@@ -80,7 +80,7 @@ ref.on("value", function(snapshot) {
     }
 })
 
-// Push songs into firebase
+// Push songs into firebase after clicking search button
 $("#search-button").on("click", function(e) {
     e.preventDefault();
 
@@ -317,6 +317,8 @@ $("#cancel-button").on("click", function(e) {
 })
 
 $(document).on("click", ".song-span", function() {
+	var videoId;
+
     //Load song onto "Selected Song" panel
     $("#active-song-container").show();
     $("#active-song-title").text($(this).text());
@@ -347,8 +349,6 @@ $(document).on("click", ".song-span", function() {
             }
         });
     });
-
-    var videoId;
 
     ref.child("playlist").child(latestFirebaseKey).once("value", function(snapshot) {
         if (snapshot.exists() === true) {
