@@ -1,5 +1,5 @@
 /*background image and styling*/
-.container {
+body {
     background-image: url("https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-textures.jpg");
     background-size: cover;
     background-repeat: no-repeat;
