@@ -147,7 +147,7 @@ $("#search-button").on("click", function (e) {
 
 //Displays current song list 
 ref.child("playlist").on("child_added" , function (songItem) {
-		var songList = $("<li>");
+		var songList = $("<li class='song-item'>");
 		var songAndArtist;
 		var songKey = songItem.getKey();
 		songAndArtist = songItem.val().artist + " - " + songItem.val().song;
@@ -306,6 +306,7 @@ $("#img-add-button").on("click", function(e) {
 	$("#img-modal").modal("hide");
 });
 
+//for Delete Confirmation mixtape modal
 $("#confirm-delete-button").on("click", function(e) {
 	e.preventDefault();
 	ref.set(null);
@@ -317,3 +318,37 @@ $("#cancel-button").on("click", function(e) {
 	e.preventDefault();
 	$("#delete-modal").modal("hide");
 })
+
+$(document).on("click", ".song-item", function() {
+	//Load song onto "Selected Song" panel
+	$("#active-song-container").show();
+	$("#active-song-title").text($(this).text());
+	
+	//DELETE EXISTING NOTES FROM SOME OTHER SONG
+	$("#active-song-notes").empty();
+
+	// get key of recently added song
+	var latestFirebaseKey = $(this).attr("id");
+
+	//add data-key to "Add Note" button in "Selected Song"
+	$("#active-song-add-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#active-song-add-gif-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#gif-search-button").attr("data-firebase-key", latestFirebaseKey);
+	$("#img-add-button").attr("data-firebase-key", latestFirebaseKey);
+
+	//add notes for song
+	ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			console.log(childSnapshot.val());
+			if(childSnapshot.val().type === "text") {
+				var content = childSnapshot.val().content;
+				var newDiv = $("<div class='note'>").text(content);
+				$("#active-song-notes").append(newDiv);
+			} else {
+				var imgLink = childSnapshot.val().content;
+				var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+				$("#active-song-notes").append(newDiv);
+			}
+		});
+	});
+});
