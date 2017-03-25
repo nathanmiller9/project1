@@ -147,18 +147,22 @@ $("#search-button").on("click", function(e) {
         //add notes for song
         ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
-                if (childSnapshot.child(type).exists() === false) {
+                if (childSnapshot.val().type === "text") {
                     var content = childSnapshot.val().content;
                     var newDiv = $("<div class='note'>").text(content);
                     newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                     $("#active-song-notes").append(newDiv);
-                } else {
+                } else if(childSnapshot.val().type === "img") {
                     var gifLink = childSnapshot.val().content;
                     var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", gifLink));
                     newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                     $("#active-song-notes").append(newDiv);
+                } else if(childSnapshot.val().type === "giphy") {
+                    var gifLink = childSnapshot.val().content;
+                    var newDiv = $("<div class='note'>").append($("<img class='gif-note'>").attr("src", gifLink));
+                    newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
+                    $("#active-song-notes").append(newDiv);
                 }
-
             });
         });
 
@@ -258,7 +262,7 @@ $("#gif-search-button").on("click", function(e) {
 
             resultsContainer.prepend(singleResultSpan);
         }
-        
+
         $("#gif-search-query").val("");
     });
 });
@@ -275,7 +279,7 @@ $(document).on("click", ".result", function() {
     });
 
     var gifLink = $(this).attr("src");
-    var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", gifLink));
+    var newDiv = $("<div class='note'>").append($("<img class='gif-note'>").attr("src", gifLink));
     newDiv.append($("<span class='timestamp'>").text(timestamp));
     $("#active-song-notes").append(newDiv);
 
@@ -350,9 +354,14 @@ $(document).on("click", ".song-span", function() {
                 var newDiv = $("<div class='note'>").text(content);
                 newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                 $("#active-song-notes").append(newDiv);
-            } else {
+            } else if (childSnapshot.val().type === "img") {
                 var imgLink = childSnapshot.val().content;
                 var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", imgLink));
+                newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
+                $("#active-song-notes").append(newDiv);
+            } else if (childSnapshot.val().type === "giphy") {
+                var imgLink = childSnapshot.val().content;
+                var newDiv = $("<div class='note'>").append($("<img class='gif-note'>").attr("src", imgLink));
                 newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                 $("#active-song-notes").append(newDiv);
             }

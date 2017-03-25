@@ -63,6 +63,10 @@ img {
 }
 
 .img-note {
+    max-width: 100%;
+}
+
+.gif-note {
     width: initial;
     max-width: initial;
 }
