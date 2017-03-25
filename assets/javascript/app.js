@@ -150,10 +150,12 @@ $("#search-button").on("click", function(e) {
                 if (childSnapshot.child(type).exists() === false) {
                     var content = childSnapshot.val().content;
                     var newDiv = $("<div class='note'>").text(content);
+                    newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                     $("#active-song-notes").append(newDiv);
                 } else {
                     var gifLink = childSnapshot.val().content;
-                    var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+                    var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", gifLink));
+                    newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                     $("#active-song-notes").append(newDiv);
                 }
 
@@ -224,6 +226,7 @@ $("#active-song-add-button").on("click", function(e) {
     //add new notes to active song note area
     var newNoteContent = $("#active-song-text-input").val();
     var newDiv = $("<div class='note'>").text(newNoteContent);
+    newDiv.append($("<span class='timestamp'>").text(timestamp));
     $("#active-song-notes").append(newDiv);
 
     $("#active-song-text-input").val("");
@@ -255,6 +258,8 @@ $("#gif-search-button").on("click", function(e) {
 
             resultsContainer.prepend(singleResultSpan);
         }
+        
+        $("#gif-search-query").val("");
     });
 });
 
@@ -270,7 +275,8 @@ $(document).on("click", ".result", function() {
     });
 
     var gifLink = $(this).attr("src");
-    var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+    var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", gifLink));
+    newDiv.append($("<span class='timestamp'>").text(timestamp));
     $("#active-song-notes").append(newDiv);
 
     $("#gif-results").empty();
@@ -293,6 +299,7 @@ $("#img-add-button").on("click", function(e) {
 
     var imgLink = $("#img-link").val();
     var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+    newDiv.append($("<span class='timestamp'>").text(timestamp));
     $("#active-song-notes").append(newDiv);
 
     $("#img-modal").modal("hide");
@@ -341,10 +348,12 @@ $(document).on("click", ".song-span", function() {
             if (childSnapshot.val().type === "text") {
                 var content = childSnapshot.val().content;
                 var newDiv = $("<div class='note'>").text(content);
+                newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                 $("#active-song-notes").append(newDiv);
             } else {
                 var imgLink = childSnapshot.val().content;
-                var newDiv = $("<div class='note'>").append($("<img>").attr("src", imgLink));
+                var newDiv = $("<div class='note'>").append($("<img class='img-note'>").attr("src", imgLink));
+                newDiv.append($("<span class='timestamp'>").text(childSnapshot.val().time));
                 $("#active-song-notes").append(newDiv);
             }
         });

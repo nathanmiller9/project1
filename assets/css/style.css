@@ -33,6 +33,50 @@ img {
     width: 80%;
 }
 
+.note {
+    margin: 15px;
+    font-size: 20px;
+}
+
+@media (max-width: 1080px) {
+    .timestamp {
+        display: none;
+    }
+}
+
+#active-song-title {
+    font-size: 44px;
+}
+
+.timestamp {
+    float: right;
+    font-size: 14px;
+    color: #666;
+}
+
+#gif-container {
+    margin: 20px;
+}
+
+#img-container {
+    margin: 20px;
+}
+
+.img-note {
+    width: initial;
+    max-width: initial;
+}
+
+.result {
+    width: initial;
+    cursor: pointer;
+    margin: 20px 20px 0 0;
+}
+
+.result:hover, .result:active {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
 /*start button font*/
 #start-button {
     font-family: 'Permanent Marker', cursive;
