@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 
 <head>
+    <!-- viewport tag telling the browser to set the width of the content to the width of the device itself, and to scale that content to 1 on load. -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     <title>Mixtape</title>
+    <!-- link to bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Asset|Audiowide|Balthazar|Bungee+Inline|Bungee+Outline|Bungee+Shade|Holtwood+One+SC|IM+Fell+English+SC|Michroma|Monofett|Monoton|Poller+One|Sigmar+One|Walter+Turncoat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Days+One|Playfair+Display+SC|Sanchez|Yrsa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- css links -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- javascript link -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
-<!-- container to apply to the entire for entire html body -->
+    <!-- overall container -->
     <div class="container">
         <!-- header section which will contain main heading and logo in one row -->
         <br>
@@ -25,26 +29,21 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="heading-logo">
                 <img src="assets/images/mixtape7.png" id="heading-logo">
             </div>
-        <!-- end of header section -->    
+            <!-- end of header section -->
         </header>
         <!-- adding space between sections -->
         <br>
-        <!-- get started button which will hide upon being clicked -->
-        <div id="spacer" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">    
+        <div id="spacer" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         </div>
-
+        <!-- get started button which will hide upon being clicked -->
         <div id="start-button" class="btn btn-xs btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">Get Started
         </div>
-        
-        <!-- sample display of visuals with attachments and playlist section (this section will disappear once "get started is clicked") -->
-
+        <!-- sample display of visuals with attachments and playlist section to give user an idea of what the app will look like (section will disappear once "get started" is clicked) -->
         <section class="row" id="sample">
-
             <!--sample visual section-->
-
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals"> 
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
                 <br>
-                    <div class="panel panel-primary">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">Your Song and Video Will Play Here</h4>
                     </div>
@@ -61,18 +60,14 @@
                         </div>
                         <h4>Video Player (Autoplay)</h4>
                         <div id="sample-result-video-container" class="embed-responsive embed-responsive-16by9" style="display: none">
-                        <div id="sample-player"></div>
+                            <div id="sample-player"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!--sample playlist section-->
-
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
-
                 <br>
-
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">Mixtape Playlist</h4>
@@ -83,31 +78,13 @@
                         </ul>
                     </div>
                 </div>
-            <!-- end sample playlist section -->
+                <!-- end sample playlist section -->
             </div>
-
-
         </section>
         <!-- main section consisting of one row and two columns housing visuals and playlist -->
-         <section class="row" id="edit-area">
-            
+        <section class="row" id="edit-area">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-
-                <!--  <div id="letter-head">
-                    <div class="row">
-                        <div id="mixtape-name" class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
-                            <h6><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="mix name"></span></h2>
-                            <div class="btn btn-success btn-xs" id="mixtape-name-input-btn">Submit
-                            </div>
-                        </div>
-                        <div id="who-its-for" class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
-                            <h6><span id="recipient"><input id="recipient-input" type="text" placeholder="who's it for?"></span></h2>
-                            <div class="btn btn-success btn-xs" id="recipient-input-btn">Submit</div>
-                        </div>
-                    </div>      
-                </div> -->
-            
-
+                <!-- section to name the mix and recipient -->
                 <div id="letter-head">
                     <div class="row">
                         <div id="mixtape-name" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -125,22 +102,11 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
+            <!-- section to house the main visual window for visuals, messages, and attachments -->
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-
-                 <div id="letter-head">
-                    <div class="row">
-                       <!--  <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-6"><form><input type="text" id="mixtape" placeholder="mix name"><span><button class ="btn btn-default btn-xs" id="mixtape-name-input-btn">Submit</button></span></form></div> -->
-                        <span class ="btn btn-default btn-xs"></span>
-                    </div>      
-                </div>
-            </div>
-            <!-- section to house the main visual window for messages, visuals, attachments -->
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-                
                 <div class="panel panel-default">
+                    <!-- video display -->
                     <div class="panel-heading">
                         <h4 class="panel-title">YouTube - your video will display here</h4>
                     </div>
@@ -157,31 +123,14 @@
                         </div>
                         <h4>Video Player (Autoplay)</h4>
                         <div id="result-video-container" class="embed-responsive embed-responsive-16by9" style="display: none">
-                        <div id="player"></div>
+                            <div id="player"></div>
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">YouTube API - Search Query</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="search-query">Artist</label>
-                                <input type="text" id="search-query" class="form-control" placeholder="Search on YouTube">
-                                <button type="submit" id="search-button" class="btn btn-success btn-xs">Search + Add to Mixtape</button>
-                            </div>
-                        </form>
-                        <h4>YouTube API Key</h4>
-                        <div id="youtube-api-container"></div>
-                    </div>
-                </div> -->
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Add a note to attach to the selected song</h4>
+                        <!-- a place to make a note attachment -->
+                        <h4 class="panel-title">Create a note to attach to the selected song</h4>
                     </div>
                     <div class="panel-body">
                         <div id="active-song-container" style="display: none">
@@ -189,58 +138,72 @@
                             <form class="form-group">
                                 <input id="active-song-text-input" class="form-control" placeholder="What do you have to say about this song?"></input>
                                 <button id="active-song-add-button" class="btn btn-success">Add Note</button>
-                            </form><!-- end form-group -->
-
-
-                            <!-- Button trigger modal for GIPHY gifs -->
+                            </form>
+                            <!-- end form-group -->
+                            <!-- Add a Gif button -->
                             <button id="active-song-add-gif-button" class="btn btn-success" data-toggle="modal" data-target="#gif-modal">Add GIF</button>
-
+                            <!-- Button trigger modal for giphy gifs -->
                             <div class="modal fade" id="gif-modal" tabindex="-1" role="dialog" aria-labelledby="gif-modal-label">
-                              <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 class="modal-title">Search for a GIF and click to attach</h4>
-                                  </div><!-- end modal-header -->
-                                  <form class="form-inline">
-                                      <div class="form-group">
-                                          <input type="text" id="gif-search-query" class="form-control" placeholder="Search on GIPHY">
-                                          <button id="gif-search-button" class="btn btn-default">Search</button>
-                                          <div id="gif-results"></div><!-- end gif-results -->
-                                      </div><!-- end form-group -->
-                                  </form><!-- end form-inline -->
-                                </div><!-- end modal-content -->
-                              </div><!-- end modal-dialog -->
-                            </div><!-- end modal -->
-
-                            <!-- Button trigger modal for any external img link -->
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Search for a GIF and click to attach</h4>
+                                        </div>
+                                        <!-- end modal-header -->
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <input type="text" id="gif-search-query" class="form-control" placeholder="Search on Giphy">
+                                                <button id="gif-search-button" class="btn btn-default">Search</button>
+                                                <div id="gif-results"></div>
+                                                <!-- end gif-results -->
+                                            </div>
+                                            <!-- end form-group -->
+                                        </form>
+                                        <!-- end form-inline -->
+                                    </div>
+                                    <!-- end modal-content -->
+                                </div>
+                                <!-- end modal-dialog -->
+                            </div>
+                            <!-- end modal -->
+                            <!-- Add external image button -->
                             <button id="active-song-add-img-button" class="btn btn-success" data-toggle="modal" data-target="#img-modal">Add External Image</button>
-
+                            <!-- Button trigger modal for any external img link -->
                             <div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="img-modal-label">
-                              <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 class="modal-title">Attach a link to an external image</h4>
-                                  </div><!-- end modal-header -->
-                                  <form class="form-inline">
-                                      <div class="form-group">
-                                          <input type="text" id="img-link" class="form-control" placeholder="Image Link">
-                                          <button id="img-add-button" class="btn btn-default">Add</button>
-                                      </div><!-- end form-group -->
-                                  </form><!-- end form-inline -->
-                                </div><!-- end modal-content -->
-                              </div><!-- end modal-dialog -->
-                            </div><!-- end modal -->
-
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Attach an external image</h4>
+                                        </div>
+                                        <!-- end modal-header -->
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <input type="text" id="img-link" class="form-control" placeholder="Image Link">
+                                                <button id="img-add-button" class="btn btn-default">Add</button>
+                                            </div>
+                                            <!-- end form-group -->
+                                        </form>
+                                        <!-- end form-inline -->
+                                    </div>
+                                    <!-- end modal-content -->
+                                </div>
+                                <!-- end modal-dialog -->
+                            </div>
+                            <!-- end modal -->
                             <h4>Notes</h4>
-                            <div id="active-song-notes"></div><!-- end active-song-notes -->
-                        </div><!-- end active-song-container -->
-                    </div><!-- end panel-body -->
-                </div><!-- end panel -->
-
+                            <div id="active-song-notes"></div>
+                            <!-- end active-song-notes -->
+                        </div>
+                        <!-- end active-song-container -->
+                    </div>
+                    <!-- end panel-body -->
+                </div>
+                <!-- end panel -->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        <!-- section to search for a youtube song and video -->
                         <h3 class="panel-title">YouTube - search and select songs for your mix</h3>
                     </div>
                     <div class="panel-body">
@@ -253,69 +216,64 @@
                                 <button type="submit" id="search-button" class="btn btn-primary btn-xs">Search + Add to Mixtape</button>
                             </div>
                         </form>
-                        <!-- <h4>YouTube API Key</h4> -->
                         <div id="youtube-api-container"></div>
                     </div>
                 </div>
-
-            <!-- end visual section -->
+                <!-- end visual section -->
             </div>
             <!-- section to display playlist -->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
-
-                <!-- <div class="panel panel-default">
-                    <div class="panel-body">
-                    <h4>Playlist</h4>
-                    <div id="song-list"></div>  
-                    <input type="text" id="song-search" placeholder="song search">
-                    <div class="btn btn-primary" id="song-search-submit">SUBMIT</div>
-                    <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
-                    </div>
-                </div>   -->
-               
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div>
                             <h4 class="panel-title" id="firebase-title">Mix Name</h4>
-                            <h4><span class="panel-title" id="playlist-title"></span></h4>
+                            <!-- mix name and recipient populated from the name mix and recipient user input section -->
+                            <span class="panel-title" id="playlist-title"></span>
+                            <span id="giftee"></span>
                         </div>
                     </div>
                     <div class="panel-body">
                         <ol id="mixtape-container">
                         </ol>
-
-                        <!-- Button trigger modal for deleting mixtape -->
+                        <!-- delete mix button -->
                         <button id="delete-button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal">Delete Mixtape</button>
-
+                        <!-- Button trigger modal for deleting mixtape -->
                         <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label">
-                          <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                  <h4 class="modal-title">Are you sure you want to delete your mixtape?</h4>
-                              </div><!-- end modal-header -->
-                              <form class="form-inline">
-                                  <div class="form-group">
-                                      <button id="cancel-button" class="btn btn-default">Cancel</button>
-                                      <button id="confirm-delete-button" class="btn btn-danger">Delete</button>
-                                  </div><!-- end form-group -->
-                              </form><!-- end form-inline -->
-                            </div><!-- end modal-content -->
-                          </div><!-- end modal-dialog -->
-                        </div><!-- end modal -->
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Are you sure you want to delete your mixtape?</h4>
+                                    </div>
+                                    <!-- end modal-header -->
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <button id="cancel-button" class="btn btn-default">Cancel</button>
+                                            <button id="confirm-delete-button" class="btn btn-danger">Delete</button>
+                                        </div>
+                                        <!-- end form-group -->
+                                    </form>
+                                    <!-- end form-inline -->
+                                </div>
+                                <!-- end modal-content -->
+                            </div>
+                            <!-- end modal-dialog -->
+                        </div>
+                        <!-- end modal -->
                     </div>
                 </div>
-                <div class="alert alert-info" role="alert" id="giftee">for: </div>
-            <!-- end playlist section -->
+                <!-- end playlist section -->
             </div>
-        <!-- end section -->
+            <!-- end section -->
         </section>
-    <!-- end container div -->
+        <!-- end container div -->
     </div>
-        <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- link to firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <!-- Latest compiled and minified Bootstrap javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- link to local javascript -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>

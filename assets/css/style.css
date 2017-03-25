@@ -1,294 +1,460 @@
-
-
-/*
-
-potential background templates:
-https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-textures.jpg;*/
+/*background image and styling*/
 .container {
     background-image: url("https://images.template.net/wp-content/uploads/2015/04/seamless-white-brick-textures.jpg");
-    /*background-image: url("../images/background.png");*/
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
     width: 100%;
- }
+}
 
-
- #heading {
+/*styling for header*/
+#heading {
     font-weight: 800;
     font-size: 7em;
     font-family: 'Audiowide', cursive;
-    /*font-family: 'Sigmar One', cursive;*/
-    /*font-family: 'Monoton', cursive;*/
-    /*font-family: 'Michroma', sans-serif;*/
-    /*font-family: 'Walter Turncoat', cursive;
-    /*font-family: 'Bungee Outline', cursive;*/
-    /*font-family: 'Bungee Inline', cursive;*/
-    /*font-family: 'Holtwood One SC', serif;*/
-    /*font-family: 'Bungee Shade', cursive;
-    /*font-family: 'IM Fell English SC', serif;
-    /*font-family: 'Balthazar', serif;*/
-    /*font-family: 'Poller One', cursive;*/
-    /*font-family: 'Asset', cursive;
-    /*font-family: 'Monofett', cursive;*/
- }
+}
 
- .heading-responsive {
+.heading-responsive {
     display: flex;
     align-items: center;
- }
+}
 
- #heading-logo {
+#heading-logo {
     display: flex;
     align-items: center;
     justify-content: center;
- }
-
- img {
-    width: 80%;
- }
+}
 
 .checkbox {
     display: inline;
 }
 
+img {
+    width: 80%;
+}
+
+/*start button font*/
 #start-button {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.3em;
     opacity: .9;
- }
+}
 
- .panel-title, 
- #playlist-title, 
- #giftee,
- #mixtape,
- #recipient {
+/*additional font sizing*/
+.panel-title,
+#playlist-title,
+#giftee,
+#mixtape,
+#recipient,
+#final-giftee {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.1em;
     opacity: .9;
- }
+}
+
+#mixtape-container,
+.checkbox {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.1em;
+}
 
 #visuals {
-    /*border: solid 5px black;*/
     overflow: auto;
 }
 
 #playlist {
-    /*height: 300px;*/
-    /*border: solid 5px black;*/
     overflow: auto;
 }
 
-#mixtape-container, .checkbox {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.1em;
-}
+/*responsiveness via media queries*/
 
-
-/*responsiveness*/
 @media (max-width: 299.9px) {
-        #heading {
-            font-size: 2.5em;
-        }
-        #start-button {
-            font-size: .7em;
-        }
+    #heading {
+        font-size: 2.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: .7em;
+    }
 }
 
 @media (min-width: 300px) and (max-width: 320.9px) {
-        #heading {
-            font-size: 3.2em;
-        }
-        #start-button {
-            font-size: 1em;
-        }
+    #heading {
+        font-size: 3.2em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: .8em;
+    }
 }
 
 @media (min-width: 321px) and (max-width: 371.9px) {
-        #heading {
-            font-size: 3.4em;
-        }
-        #start-button {
-            font-size: .9em;
-        }
+    #heading {
+        font-size: 3.4em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: .9em;
+    }
 }
 
 @media (min-width: 372px) and (max-width: 411.9px) {
-        #heading {
-            font-size: 3.7em;
-        }
-        #start-button {
-            font-size: 1em;
-        }
+    #heading {
+        font-size: 3.7em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1em;
+    }
 }
 
 @media (min-width: 412px) and (max-width: 451.9px) {
-        #heading {
-            font-size: 4.3em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 4.3em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 452px) and (max-width: 483.9px) {
-        #heading {
-            font-size: 4.8em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 4.8em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 484px) and (max-width: 527.9px) {
-        #heading {
-            font-size: 5em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 528px) and (max-width: 559.9px) {
-        #heading {
-            font-size: 5.5em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 5.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 560px) and (max-width: 599.9px) {
-        #heading {
-            font-size: 6em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 6em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 600px) and (max-width: 650.9px) {
-        #heading {
-            font-size: 6.5em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 6.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 651px) and (max-width: 700.9px) {
-        #heading {
-            font-size: 6.9em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 6.9em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 701px) and (max-width: 767.9px) {
-        #heading {
-            font-size: 7.6em;
-        }
-        #start-button {
-            font-size: 1.15em;
-        }
+    #heading {
+        font-size: 7.6em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.15em;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 882.9px) {
-        #heading {
-            font-size: 8.4em;
-        }
-        #start-button {
-            font-size: 1.3em;
-        }
+    #heading {
+        font-size: 8.4em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.3em;
+    }
 }
 
 @media (min-width: 883px) and (max-width: 942.9px) {
-        #heading {
-            font-size: 8.9em;
-        }
-        #start-button {
-            font-size: 1.3em;
-        }
+    #heading {
+        font-size: 8.9em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.3em;
+    }
 }
 
 @media (min-width: 943px) and (max-width: 991.9px) {
-        #heading {
-            font-size: 9.5em;
-        }
-        #start-button {
-            font-size: 1.3em;
-        }
+    #heading {
+        font-size: 9.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.3em;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1007.9px) {
-        #heading {
-            font-size: 10em;
-        }
-        #start-button {
-            font-size: 1.3em;
-        }
+    #heading {
+        font-size: 10em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.3em;
+    }
 }
 
 @media (min-width: 1008px) and (max-width: 1100px) {
-        #heading {
-            font-size: 10.2em;
-        }
-        #start-button {
-            font-size: 1.35em;
-        }
+    #heading {
+        font-size: 10.2em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.35em;
+    }
 }
 
 @media (min-width: 1100.1px) and (max-width: 1196.9px) {
-        #heading {
-            font-size: 10.8em;
-        }
-        #start-button {
-            font-size: 1.4em;
-        }
+    #heading {
+        font-size: 10.8em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.4em;
+    }
 }
 
 @media (min-width: 1197px) and (max-width: 1210.9px) {
-        #heading {
-            font-size: 11em;
-        }
-        #start-button {
-            font-size: 1.4em;
-        }
+    #heading {
+        font-size: 11em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.4em;
+    }
 }
 
 @media (min-width: 1211px) and (max-width: 1350.9px) {
-        #heading {
-            font-size: 11.5em;
-        }
-        #start-button {
-            font-size: 1.5em;
-        }
+    #heading {
+        font-size: 11.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.5em;
+    }
 }
 
 @media (min-width: 1351px) and (max-width: 1501.9px) {
-        #heading {
-            font-size: 13em;
-        }
-        #start-button {
-            font-size: 1.5em;
-        }
+    #heading {
+        font-size: 13em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.5em;
+    }
 }
 
 @media (min-width: 1502px) and (max-width: 1651.9px) {
-        #heading {
-            font-size: 14.5em;
-        }
-        #start-button {
-            font-size: 1.5em;
-        }
+    #heading {
+        font-size: 14.5em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+        font-size: 1.5em;
+    }
 }
 
 @media (min-width: 1652px) {
-        #heading {
-            font-size: 16em;
-        }
-        #start-button {
-            font-size: 1.5em;
-        }
+    #heading {
+        font-size: 16em;
+    }
+    #start-button,
+    .panel-title,
+    #playlist-title,
+    #giftee,
+    #mixtape,
+    #recipient,
+    #final-giftee,
+    #mixtape-container,
+    .checkbox {
+    font-size: 2em;
+    }
 }
