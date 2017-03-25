@@ -49,14 +49,13 @@ $("#recipient-input-btn").on("click", function (e) {
 		$("#recipient-input-btn").hide();
 		$("#recipient-input").hide();
 		$("#recipient").hide();
-		$("#giftee").html("A mix for " + $("#recipient-input").val());
+		$("#giftee").html(" for " + $("#recipient-input").val());
 		$("#firebase-title").hide();
 		// $("#mixtape").html($("#mixtape-name-input").val() + " mix");
-		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix");
+		$("#playlist-title").html($("#mixtape-name-input").val() + " Mix ");
 		$("#mixtape-name").hide();
 	}	
 })
-
 
 // Push songs into firebase
 $("#search-button").on("click", function (e) {

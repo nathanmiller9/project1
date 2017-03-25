@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 
 <head>
+    <!-- viewport tag telling the browser to set the width of the content to the width of the device itself, and to scale that content to 1 on load. -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     <title>Mixtape</title>
+    <!-- link to bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- link to google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Asset|Audiowide|Balthazar|Bungee+Inline|Bungee+Outline|Bungee+Shade|Holtwood+One+SC|IM+Fell+English+SC|Michroma|Monofett|Monoton|Poller+One|Sigmar+One|Walter+Turncoat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Days+One|Playfair+Display+SC|Sanchez|Yrsa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <!-- css links -->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- javascript link -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
-<!-- container to apply to the entire for entire html body -->
+    <!-- container to apply to the entire for entire html body -->
     <div class="container">
         <!-- header section which will contain main heading and logo in one row -->
         <br>
@@ -25,32 +30,16 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="heading-logo">
                 <img src="assets/images/mixtape7.png" id="heading-logo">
             </div>
-        <!-- end of header section -->    
+            <!-- end of header section -->
         </header>
-        
         <section class="row" id="results-area">
-
-            <!-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-                 <div id="letter-head" class="container">
-                    <div class="row">
-                        <div id="mixtape-name" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <h6><span id="mixtape"><input id="mixtape-name-input" type="text" placeholder="mix name"></span></h2>
-                            <div class="btn btn-success btn-xs" id="mixtape-name-input-btn">Submit
-                            </div>
-                        </div>
-                        <div id="who-its-for" class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <h6><span id="recipient"><input id="recipient-input" type="text" placeholder="who's it for?"></span></h2>
-                            <div class="btn btn-success btn-xs" id="recipient-input-btn">Submit</div>
-                        </div>
-                    </div>      
-                </div>
-            </div> -->
             <!-- section to house the main visual window for messages, visuals, attachments -->
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="visuals">
-            <br>
+                <br>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">YouTube API - Search Result</h4>
+                        <!-- music video will display here -->
+                        <h4 class="panel-title">Music Video and Attachments</h4>
                     </div>
                     <div class="panel-body">
                         <div id="result-container" style="display: none">
@@ -65,45 +54,39 @@
                         </div>
                         <h4>Video Player (Autoplay)</h4>
                         <div id="result-video-container" class="embed-responsive embed-responsive-16by9" style="display: none">
-                        <div id="player"></div>
+                            <div id="player"></div>
                         </div>
                     </div>
                 </div>
-
-            <!-- end visual section -->
+                <!-- end visual section -->
             </div>
             <!-- section to display playlist -->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="playlist">
-            
-                <!-- <div class="panel panel-default">
-                    <div class="panel-body">
-                    <h4>Playlist</h4>
-                    <div id="song-list"></div>  
-                    <input type="text" id="song-search" placeholder="song search">
-                    <div class="btn btn-primary" id="song-search-submit">SUBMIT</div>
-                    <div id="song-add" class="btn glyphicon glyphicon-plus"></div>
-                    </div>
-                </div>   -->
                 <br>
-                <div class="panel panel-primary">
+                <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Firebase - List of Songs</h4>
+                        <!-- final mix placeholder title to be hidden once populated with actual mix name and recipient -->
+                        <h4 class="panel-title" id="final-mix-placeholder-title">Mix Name and Who It's for</h4>
+                        <!-- mix name and recipient name, populated from firebase -->
+                        <span class="panel-title" id="final-playlist-title"></span>
+                        <span id="final-giftee"></span>
                     </div>
                     <div class="panel-body">
                         <ol id="mixtape-container"></ol>
+                        <!-- delete mix button -->
                         <button id="delete-button" class="btn btn-danger btn-xs">Delete Mixtape</button>
                     </div>
                 </div>
-                <div class="alert alert-info" role="alert" id="giftee"></div>
-            <!-- end playlist section -->
+                <!-- end playlist section -->
             </div>
-        <!-- end section -->
+            <!-- end section -->
         </section>
-
-    <!-- end container div -->
+        <!-- end container div -->
     </div>
-
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- link to firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <!-- link to local javascript -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
