@@ -190,6 +190,25 @@
                             <div class="form-group">
                                 <textarea id="active-song-textarea" class="form-control" placeholder="What do you have to say about this song?"></textarea>
                                 <button id="active-song-add-button" class="btn btn-success">Add Note</button>
+
+                                <!-- Button trigger modal -->
+                                <button id="active-song-add-gif-button" class="btn btn-success" data-toggle="modal" data-target="#gif-modal">Add GIF</button>
+
+                                <div class="modal fade" id="gif-modal" tabindex="-1" role="dialog" aria-labelledby="gif-modal-label">
+                                  <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title">Search for a GIF and click to attach</h4>
+                                      </div>
+                                      
+                                      <input type="text" id="gif-search-query" placeholder="Search on GIPHY">
+                                      <button id="gif-search-button">Search</button>
+                                      <div id="gif-results"></div>
+                                    </div>
+                                  </div>
+                                </div>
+
                             </div>
                             <h4>Video Notes</h4>
                             <div id="active-song-notes"></div>
@@ -252,6 +271,8 @@
     <!-- end container div -->
     </div>
         <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 

@@ -119,13 +119,22 @@ $("#search-button").on("click", function (e) {
 
 		//add data-key to "Add Note" button in "Selected Song"
 		$("#active-song-add-button").attr("data-firebase-key", latestFirebaseKey);
-
+		$("#active-song-add-gif-button").attr("data-firebase-key", latestFirebaseKey);
+		$("#gif-search-button").attr("data-firebase-key", latestFirebaseKey);
+		
 		//add notes for song
 		ref.child("playlist").child(latestFirebaseKey).child("notes").once("value", function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
-				var content = childSnapshot.val().content;
-				var newDiv = $("<div class='note'>").text(content);
-				$("#active-song-notes").append(newDiv);
+				if(childSnapshot.child(type).exists() === false) {
+					var content = childSnapshot.val().content;
+					var newDiv = $("<div class='note'>").text(content);
+					$("#active-song-notes").append(newDiv);
+				} else {
+					var gifLink = childSnapshot.val().content;
+					var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+					$("#active-song-notes").append(newDiv);
+				}
+				
 			});
 		});
 
@@ -218,4 +227,57 @@ $("#active-song-add-button").on("click", function(e) {
 	$("#active-song-notes").append(newDiv);
 
 	$("#active-song-textarea").val("");
+});
+
+//search for GIPHY gifs
+$("#gif-search-button").on("click", function() {
+	var firebaseKey = $(this).attr("data-firebase-key");
+	console.log(firebaseKey);
+	var query = $("#gif-search-query").val();
+	console.log(query);
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=10";
+	console.log(queryURL);
+    $.ajax({
+    	url: queryURL,
+    	method: "GET"
+    }).done(function(response) {
+    	console.log("ajax");
+    	console.log(response);
+    	var results = response.data;
+    	console.log(results);
+
+		var resultsContainer = $("#gif-results");
+		resultsContainer.empty();
+
+    	for(var i = 0; i < results.length; i++) {
+    		var singleResultSpan = $("<span class='result-container'>");
+
+    		var img = $("<img class='result'>");
+    		img.attr("src", results[i].images.fixed_height.url);
+    		img.attr("data-firebase-key", firebaseKey);
+
+    		singleResultSpan.prepend(img);
+
+    		resultsContainer.prepend(singleResultSpan);
+    	}
+    });
+});
+
+$(document).on("click", ".result", function() {
+	var firebaseKey = $(this).attr("data-firebase-key");
+	var now = new Date();
+	var timestamp = now.toLocaleString();
+
+	console.log(firebaseKey);
+	ref.child("playlist").child(firebaseKey).child("notes").push({
+		type: "giphy",
+		content: $(this).attr("src"),
+		time: timestamp
+	});
+
+	var gifLink = $(this).attr("src");
+	var newDiv = $("<div class='note'>").append($("<img>").attr("src", gifLink));
+	$("#active-song-notes").append(newDiv);
+
+	$("#gif-modal").modal("hide");
 });
